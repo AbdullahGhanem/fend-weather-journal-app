@@ -6,11 +6,11 @@ let temp = 0;
 let haveError = false;
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?';
-const apikey = '&appid=ad9f00ba87efb2a8080a8c6f52353f9f';
+const apikey = '&appid=ad9f00ba87efb2a8080a8c6f52353f9f&units=metric';
 
 
 // Event listener to add function to existing HTML DOM element
@@ -88,7 +88,7 @@ const getData = async (url) => {
         const data = await res.json();
         //fill our last entry elements from data we recieve from server endpoint
         document.getElementById('date').innerHTML = `<strong>Date:</strong> <em>${data.date}</em>`;
-        document.getElementById('temp').innerHTML = `<strong>Temperature:</strong> ${data.temp} Kelvin`;
+        document.getElementById('temp').innerHTML = `<strong>Temperature:</strong> ${data.temp} Celsius`;
         document.getElementById('content').innerHTML = `<strong>Feelings:</strong> ${data.feelings}`;
         return data;
     } catch (error) {
